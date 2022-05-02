@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProyectoWebCRUD.WEB.Models.Entities.Empleado>
+
+<h1>Empleados</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Documento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                <a asp-action="Crear" class="btn btn-outline-success"><i class="far fa-plus-square"></i> Crear Empleado</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Documento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.IdEmpleado"><i class="fa fa-marker fa-lg"></i>Editar</a> |
+                    <a class="text-success" asp-action="Detalle" asp-route-id="@item.IdEmpleado"><i class="fas fa-search"></i>Detalle</a> |
+                    <a asp-action="Eliminar" asp-route-id="@item.IdEmpleado" class="text-danger m1-1" onclick="return confirm ('Deseas eliminar este registro?')"><i class="fa fa-trash-alt fa-lg"></i>Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
